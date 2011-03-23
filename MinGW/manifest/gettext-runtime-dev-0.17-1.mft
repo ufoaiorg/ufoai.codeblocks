@@ -1,0 +1,6 @@
+lib/libintl.dll.a
+lib/intl.def
+lib/intl.lib
+include/libintl.h
+make/gettext-0.17-1.sh
+manifest/gettext-runtime-dev-0.17-1.mft

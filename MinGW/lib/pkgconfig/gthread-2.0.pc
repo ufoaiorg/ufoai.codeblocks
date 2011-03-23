@@ -1,0 +1,11 @@
+prefix=c:/devel/target/1d94199243619cbd78e83f015fb94454
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: GThread
+Description: Thread support for GLib
+Requires: glib-2.0
+Version: 2.22.2
+Libs: -L${libdir} -lgthread-2.0 
+Cflags: 

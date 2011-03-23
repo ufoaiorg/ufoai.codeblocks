@@ -1,0 +1,15 @@
+include/libpng12/png.h 6c9f58e2ab448150def7622becb1d27c
+include/libpng12/pngconf.h 9c5c92383aac887554ccd9ab8ad2e258
+include/png.h 6c9f58e2ab448150def7622becb1d27c
+include/pngconf.h 9c5c92383aac887554ccd9ab8ad2e258
+lib/libpng-bcc.lib 450a624ca0653f076352b2e25dd9bedc
+lib/libpng.dll.a 770817f70047ef19b8e343af69c6c789
+lib/libpng.la f7bb890375b31a255a18de27792b7b76
+lib/libpng.lib da921f5fc7b04dbea555fde8185c55f5
+lib/libpng12.def 64278e9647e55359f4feb9ce67880fba
+lib/libpng12.dll.a 2b4e83d830e8c6eb1bea1f923226e207
+lib/libpng12.la f7bb890375b31a255a18de27792b7b76
+lib/pkgconfig/libpng.pc c4d76a47dbee219300adc109dcab2784
+lib/pkgconfig/libpng12.pc 3de5807ce13e8f9135db838d8102a1ef
+manifest/libpng-1.2.35-lib.mft
+manifest/libpng-1.2.35-lib.ver 3eb2041c6c7da8366f8f34f4ff0b9fb0
