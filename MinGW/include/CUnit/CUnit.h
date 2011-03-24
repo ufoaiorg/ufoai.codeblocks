@@ -1,7 +1,7 @@
 /*
  *  CUnit - A Unit testing framework library for C.
- *  Copyright (C) 2001            Anil Kumar
- *  Copyright (C) 2004,2005,2006  Anil Kumar, Jerry St.Clair
+ *  Copyright (C) 2001       Anil Kumar
+ *  Copyright (C) 2004-2006  Anil Kumar, Jerry St.Clair
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -19,7 +19,7 @@
  */
 
 /*
- *  Contains ASSERT Macro definitions.
+ *  ASSERT Macro definitions and general CUnit configuration definitions.
  *
  *  09/Aug/2001   ASSERT definitions. (AK)
  *
@@ -54,13 +54,13 @@
 #include <math.h>
 
 /** CUnit version number. */
-#define CU_VERSION "2.1-0"
+#define CU_VERSION "2.1-2"
 
 /*  Max string lengths for names (includes terminating NULL. */
 /** Maximum length of a test name string. */
-#define CU_MAX_TEST_NAME_LENGTH	256
+#define CU_MAX_TEST_NAME_LENGTH 256
 /** Maximim length of a suite name string. */
-#define CU_MAX_SUITE_NAME_LENGTH	256
+#define CU_MAX_SUITE_NAME_LENGTH 256
 
 /* Global type Definitions to be used for boolean operators. */
 #ifndef CU_BOOL
@@ -75,7 +75,7 @@
 
 #ifndef CU_FALSE
   /** Boolean FALSE for CUnit use. */
-  #define CU_FALSE	0
+  #define CU_FALSE 0
 #endif
 
 #ifndef CU_UNREFERENCED_PARAMETER
@@ -83,7 +83,15 @@
   #define CU_UNREFERENCED_PARAMETER(x) (void)x
 #endif
 
-#ifdef WIN32
+#ifndef CU_MAX
+#  define CU_MAX(a,b) (((a) >= (b)) ? (a) : (b))
+#endif
+
+#ifndef CU_MIN
+#  define CU_MIN(a,b) (((a) >= (b)) ? (b) : (a))
+#endif
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) || defined(__WIN32__)
 #  ifdef CU_DLL
 #    ifdef CU_BUILD_DLL
 #      define CU_EXPORT __declspec(dllexport)
@@ -93,9 +101,12 @@
 #  else
 #    define CU_EXPORT
 #  endif
+#  ifdef _MSC_VER
+#    define snprintf _snprintf
+#  endif
 #else
 #  define CU_EXPORT
-#endif
+#endif  /* WIN32 */
 
 #include "CUError.h"
 #include "TestDB.h"   /* not needed here - included for user convenience */
