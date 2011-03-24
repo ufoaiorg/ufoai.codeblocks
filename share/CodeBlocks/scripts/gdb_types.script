@@ -4,7 +4,7 @@
  *
  * $Revision: 5783 $
  * $Id: gdb_types.script 5783 2009-09-14 15:17:56Z mortenmacfly $
- * $HeadURL: svn+ssh://killerbot@svn.berlios.de/svnroot/repos/codeblocks/trunk/src/scripts/gdb_types.script $
+ * $HeadURL: svn://svn.berlios.de/codeblocks/trunk/src/scripts/gdb_types.script $
  */
 
 // Registers new types with driver

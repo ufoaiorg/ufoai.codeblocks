@@ -4,7 +4,7 @@
  *
  * $Revision: 5308 $
  * $Id: startup.script 5308 2008-11-11 15:28:41Z killerbot $
- * $HeadURL: svn+ssh://killerbot@svn.berlios.de/svnroot/repos/codeblocks/trunk/src/scripts/startup.script $
+ * $HeadURL: svn://svn.berlios.de/codeblocks/trunk/src/scripts/startup.script $
  */
 
 Log(_T("Running startup script"));
