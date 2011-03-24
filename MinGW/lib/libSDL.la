@@ -5,7 +5,7 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname='../bin/SDL.dll'
+dlname='SDL.dll'
 
 # Names of this library.
 library_names='libSDL.dll.a'
@@ -17,7 +17,7 @@ old_library='libSDL.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -luser32 -lgdi32 -lwinmm -ldxguid'
+dependency_libs=' /lib/libiconv.la -luser32 -lgdi32 -lwinmm -ldxguid'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/tmp/tmp_codeblocks/codeblocks/MinGW/lib'
+libdir='/lib'

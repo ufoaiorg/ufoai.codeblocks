@@ -19,9 +19,9 @@ ACTION=${1:-help}
 # Some packages are using the version information at several places
 # because we have to copy some files around
 SDL_VERSION=1.2.14
-SDL_MIXER_VERSION=1.2.8
-SDL_TTF_VERSION=2.0.9
-SDL_IMAGE_VERSION=1.2.6
+SDL_MIXER_VERSION=1.2.11
+SDL_TTF_VERSION=2.0.10
+SDL_IMAGE_VERSION=1.2.10
 CURL_VERSION=7.16.4
 #//	CURL_VERSION=7.17.1
 CUNIT_VERSION=2.1-0
