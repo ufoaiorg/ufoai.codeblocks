@@ -2,9 +2,9 @@
  * This file is part of the Code::Blocks IDE and licensed under the GNU General Public License, version 3
  * http://www.gnu.org/licenses/gpl-3.0.html
  *
- * $Revision$
- * $Id$
- * $HeadURL$
+ * $Revision: 7635 $
+ * $Id: common_functions.script 7635 2011-12-13 21:58:19Z danselmi $
+ * $HeadURL: svn://svn.berlios.de/codeblocks/trunk/src/plugins/scriptedwizard/resources/common_functions.script $
  */
 
 //
@@ -24,9 +24,11 @@ function WarningsOn(base, compilerID)
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("ppc*"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("cygwin"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gcc"))
+             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gfortran"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gdc"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("icc"))
-             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("tcc")) )
+             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("tcc"))
+             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("sdcc")) )
     {
         base.AddCompilerOption(_T("-Wall"));
     }
@@ -68,6 +70,7 @@ function DebugSymbolsOn(base, compilerID)
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("dmc"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("dmd"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gcc"))
+             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gfortran"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gdc"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("ldc"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("tcc")) )
@@ -91,6 +94,10 @@ function DebugSymbolsOn(base, compilerID)
     else if (GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("ow")))
     {
         base.AddCompilerOption(_T("-d2")); // full symbolic debugging information
+    }
+    else if (GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("sdcc")))
+    {
+        base.AddCompilerOption(_T("--debug"));
     }
     else
     {
@@ -117,6 +124,7 @@ function OptimizationsOn(base, compilerID)
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("bcc*"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("cygwin"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gcc"))
+             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gfortran"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("tricore*"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("ppc*"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gdc"))
@@ -126,6 +134,7 @@ function OptimizationsOn(base, compilerID)
 
         if (   GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("arm*"))
             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gcc"))
+            || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gfortran"))
             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gdc")) )
         {
             base.AddLinkerOption(_T("-s"));
@@ -152,6 +161,18 @@ function OptimizationsOn(base, compilerID)
     {
         base.AddCompilerOption(_T("-o"));
     }
+    else if (GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("ifcwin")))
+    {
+        base.AddCompilerOption(_T("/O2"));
+    }
+    else if (GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("ifclin")))
+    {
+        base.AddCompilerOption(_T("-O2"));
+    }
+    else if (GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("sdcc")))
+    {
+        base.AddCompilerOption(_T("--opt-code-size"));
+    }
     else
     {
         ShowWarning(_T("This wizard doesn't know how to setup optimisation flags for this compiler.\n"));
@@ -167,6 +188,7 @@ function CppExceptionsOn(base, compilerID)
         base.AddCompilerOption(_T("/EHsc"));
     }
     else if (   GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gcc"))
+             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gfortran"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("cygwin")) )
     {
         base.AddCompilerOption(_T("-fexceptions"));
@@ -509,7 +531,7 @@ function AddFileToTargets(the_wiz, the_file)
             local pf = prj.AddFile(tgtidx, the_file);
             GetProjectManager().RebuildTree(); // make sure our view is current
 
-            // if the file was added succesfully, (...)
+            // if the file was added successfully, (...)
             if (!IsNull(pf))
             {
                 // add to this file the rest of the selected targets...

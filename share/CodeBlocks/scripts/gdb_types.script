@@ -2,8 +2,8 @@
  * This file is part of the Code::Blocks IDE and licensed under the GNU General Public License, version 3
  * http://www.gnu.org/licenses/gpl-3.0.html
  *
- * $Revision: 5783 $
- * $Id: gdb_types.script 5783 2009-09-14 15:17:56Z mortenmacfly $
+ * $Revision: 7443 $
+ * $Id: gdb_types.script 7443 2011-09-01 16:29:16Z mortenmacfly $
  * $HeadURL: svn://svn.berlios.de/codeblocks/trunk/src/scripts/gdb_types.script $
  */
 
