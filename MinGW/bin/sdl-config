@@ -1,14 +1,14 @@
 #!/bin/sh
 
-prefix=
+prefix=/usr/local/cross-tools/i686-w64-mingw32
 exec_prefix=${prefix}
 exec_prefix_set=no
 libdir=${exec_prefix}/lib
 
-#usage="\
-#Usage: sdl-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--cflags] [--libs]"
 usage="\
-Usage: sdl-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--cflags] [--libs] [--static-libs]"
+Usage: sdl-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--cflags] [--libs]"
+#usage="\
+#Usage: sdl-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--cflags] [--libs] [--static-libs]"
 
 if test $# -eq 0; then
       echo "${usage}" 1>&2
@@ -39,18 +39,18 @@ while test $# -gt 0; do
       echo $exec_prefix
       ;;
     --version)
-      echo 1.2.14
+      echo 1.2.15
       ;;
     --cflags)
       echo -I${prefix}/include/SDL -D_GNU_SOURCE=1 -Dmain=SDL_main
       ;;
     --libs)
-      echo -L${exec_prefix}/lib  -lmingw32 -lSDLmain -lSDL
+      echo -L${exec_prefix}/lib  -lmingw32 -lSDLmain -lSDL  -mwindows
       ;;
-    --static-libs)
-#    --libs|--static-libs)
-      echo -L${exec_prefix}/lib  -lmingw32 -lSDLmain -lSDL  -liconv -lm -luser32 -lgdi32 -lwinmm -ldxguid
-      ;;
+#    --static-libs)
+##    --libs|--static-libs)
+#      echo -L${exec_prefix}/lib  -lmingw32 -lSDLmain -lSDL  -mwindows  -lm -luser32 -lgdi32 -lwinmm -ldxguid
+#      ;;
     *)
       echo "${usage}" 1>&2
       exit 1
