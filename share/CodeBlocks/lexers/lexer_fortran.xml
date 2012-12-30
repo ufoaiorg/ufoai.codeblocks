@@ -161,11 +161,18 @@ numeric_storage_size output_unit "/>
 						error_line="23"/>
                 <LanguageAttributes
                     LineComment="!"
+                    DoxygenLineComment="!>"
                     StreamCommentStart=""
                     StreamCommentEnd=""
+                    DoxygenStreamCommentStart=""
+                    DoxygenStreamCommentEnd=""
                     BoxCommentStart=""
                     BoxCommentMid=""
                     BoxCommentEnd=""
-                    CaseSensitive="0"/>
+                    CaseSensitive="0"
+                    LexerCommentStyles="1"
+                    LexerCharacterStyles=""
+                    LexerStringStyles="3,4,5"
+                    LexerPreprocessorStyles="11"/>
 		</Lexer>
 </CodeBlocks_lexer_properties>

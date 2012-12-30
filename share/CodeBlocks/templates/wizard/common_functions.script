@@ -2,8 +2,8 @@
  * This file is part of the Code::Blocks IDE and licensed under the GNU General Public License, version 3
  * http://www.gnu.org/licenses/gpl-3.0.html
  *
- * $Revision: 7635 $
- * $Id: common_functions.script 7635 2011-12-13 21:58:19Z danselmi $
+ * $Revision: 7701 $
+ * $Id: common_functions.script 7701 2012-01-16 23:25:10Z danselmi $
  * $HeadURL: svn://svn.berlios.de/codeblocks/trunk/src/plugins/scriptedwizard/resources/common_functions.script $
  */
 
@@ -27,8 +27,7 @@ function WarningsOn(base, compilerID)
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gfortran"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("gdc"))
              || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("icc"))
-             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("tcc"))
-             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("sdcc")) )
+             || GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("tcc")) )
     {
         base.AddCompilerOption(_T("-Wall"));
     }
@@ -45,6 +44,10 @@ function WarningsOn(base, compilerID)
     else if (   GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("dmc")))
     {
         base.AddCompilerOption(_T("-w-"));
+    }
+    else if( GetCompilerFactory().CompilerInheritsFrom(compilerID, _T("sdcc")) )
+    {
+        // with SDCC all warnings are enabled by default. You can only ask for less by using --less-pedantic or --disable-warning.
     }
     else
     {
